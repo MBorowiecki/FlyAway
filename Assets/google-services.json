@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "432104683123",
+    "firebase_url": "https://flyaway-38682.firebaseio.com",
+    "project_id": "flyaway-38682",
+    "storage_bucket": "flyaway-38682.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432104683123:android:0dbe26e8bd4ee173881c06",
+        "android_client_info": {
+          "package_name": "com.kgames.flyaway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432104683123-rkagkjkp3glpikpnqeg065uqo39f30dd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfemd2tkAMH5k9q2wyBu058AAQJ4SoTso"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432104683123-rkagkjkp3glpikpnqeg065uqo39f30dd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
