@@ -7,10 +7,11 @@ public class SaveData
 {
     public int exp;
     public float money;
-    public int[] ownedPlanes;
+    public List<int> ownedPlanes;
     public float fuel;
     public float fuelCapacity;
     public string playerName;
+    public int passengersWaiting;
 
     public SaveData(PlayerStats playerStats){
         exp = playerStats.playerExp;
@@ -19,5 +20,6 @@ public class SaveData
         fuel = playerStats.fuel;
         playerName = playerStats.playerName;
         fuelCapacity = playerStats.fuelCapacity;
+        passengersWaiting = playerStats.passengersWaiting;
     }
 }

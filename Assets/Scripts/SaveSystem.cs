@@ -26,8 +26,17 @@ public static class SaveSystem
 
             return data;
         }else{
-            Debug.LogError("Save file not found.");
+            Debug.LogError("Save file not found. Initializing new one.");
             return null;
+        }
+    }
+
+    public static void ResetProgress(){
+        string path = Application.persistentDataPath + "/data.save";
+        if(File.Exists(path)){
+            File.Delete(path);
+        }else{
+            Debug.Log("There's no save file.");
         }
     }
 }

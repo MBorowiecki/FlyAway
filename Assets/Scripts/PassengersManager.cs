@@ -6,6 +6,7 @@ public class PassengersManager : MonoBehaviour
 {
     public PlaneController planeController;
     public PlayerStats playerStats;
+    public int passengerPrice = 5;
 
     void Start(){
         playerStats = GameObject.Find("GameManager").GetComponent<PlayerStats>();
@@ -20,6 +21,7 @@ public class PassengersManager : MonoBehaviour
         if(planeController.publicPassengers + count <= planeController.maxPassengers && playerStats.passengersWaiting >= count){
             int addedPeds = planeController.AddPassengers(count);
             playerStats.RemovePassengers(addedPeds);
+            playerStats.SavePlayer();
         }else{
             Debug.Log("Cannot add passengers to plane.");
         }
@@ -29,11 +31,21 @@ public class PassengersManager : MonoBehaviour
         if(planeController.publicPassengers >= count && playerStats.passengersWaiting + count <= playerStats.maxPassengers){
             int removedPeds = planeController.RemovePassengers(count);
             playerStats.AddPassengers(removedPeds);
+            playerStats.SavePlayer();
         }else{
             if(planeController.publicPassengers >= count)
                 Debug.Log("Cannot remove passengers to hangar. Not enough passengers.");
             if(playerStats.passengersWaiting + count <= playerStats.maxPassengers)
                 Debug.Log("Cannot remove passengers to hangar. Not enough room." + (playerStats.passengersWaiting + count) + playerStats.maxPassengers);
+        }
+    }
+
+    public void BuyPedsToHangar(int count){
+        if(playerStats.passengersWaiting + count <= playerStats.maxPassengers){
+            int price = passengerPrice * count;
+            playerStats.RemoveMoney(price);
+            playerStats.AddPassengers(count);
+            playerStats.SavePlayer();
         }
     }
 }

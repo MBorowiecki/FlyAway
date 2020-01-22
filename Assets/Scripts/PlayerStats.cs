@@ -11,11 +11,13 @@ public class PlayerStats : MonoBehaviour
     public float money = 0;
     public float fuel = 0;
     public float fuelCapacity = 50;
-    public int[] ownedPlanes;
+    public List<int> ownedPlanes;
     public string playerName = "";
     public int[] expToLvl;
     public int passengersWaiting = 0;
     public int maxPassengers = 30;
+    public int currentPlane = 0;
+    public PlanesManager planesManager;
 
     private GameManager manager;
 
@@ -50,12 +52,31 @@ public class PlayerStats : MonoBehaviour
     public void LoadPlayer(){
         SaveData data = SaveSystem.LoadData();
 
-        playerExp = data.exp;
-        money = data.money;
-        ownedPlanes = data.ownedPlanes;
-        fuel = data.fuel;
-        playerName = data.playerName;
-        fuelCapacity = data.fuelCapacity;
+        if(data != null){
+            playerExp = data.exp;
+            money = data.money;
+            ownedPlanes = data.ownedPlanes;
+            fuel = data.fuel;
+            playerName = data.playerName;
+            fuelCapacity = data.fuelCapacity;
+            passengersWaiting = data.passengersWaiting;
+        }else{
+            Debug.Log("Initializing new save.");
+            money = 1000;
+            playerExp = 0;
+            fuelCapacity = 30;
+            fuel = fuelCapacity;
+            passengersWaiting = maxPassengers;
+            ownedPlanes.Clear();
+            ownedPlanes.Add(0);
+            
+            SavePlayer();
+        }
+    }
+
+    public void ResetProgress(){
+        SaveSystem.ResetProgress();
+        LoadPlayer();
     }
 
     public void GetLevel(){
@@ -129,5 +150,20 @@ public class PlayerStats : MonoBehaviour
         }else{
             passengersWaiting = maxPassengers;
         }
+    }
+
+    public void BuyPlane(int planeNumber){
+        RemoveMoney(planesManager.planes[planeNumber].price);
+        ownedPlanes.Add(planeNumber);
+    }
+
+    public void NextPlane(){
+        if(currentPlane + 1 <= ownedPlanes.Count - 1){
+            currentPlane += 1;
+        }else{
+            currentPlane = 0;
+        }
+
+        manager.SetPlane();
     }
 }

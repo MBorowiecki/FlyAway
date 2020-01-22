@@ -8,16 +8,26 @@ public class GameManager : MonoBehaviour
     static GameObject plane;
     public Transform startingPosition;
     public Cinemachine.CinemachineVirtualCamera cinemachine;
+    public PlayerStats playerStats;
+    public PlanesManager planesManager;
     static GameObject currPlaneGO;
     // Start is called before the first frame update
     void Start()
     {
-        SpawnPlane();
-
         if(currPlaneGO == null){
             cinemachine.Follow = startingPosition;
             cinemachine.LookAt = startingPosition;
         }
+
+        if(planesManager == null){
+            planesManager = gameObject.GetComponent<PlanesManager>();
+        }
+
+        if(playerStats == null){
+            playerStats = gameObject.GetComponent<PlayerStats>();
+        }
+
+        SpawnPlane();
     }
 
     // Update is called once per frame
@@ -40,9 +50,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    public void SetPlane(GameObject planeGO){
+    public void SetPlane(){
         Destroy(currPlaneGO);
-        plane = planeGO;
+        plane = planesManager.planes[playerStats.ownedPlanes[playerStats.currentPlane]].plane;
         SpawnPlane();
     }
 
