@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
             playerStats = gameObject.GetComponent<PlayerStats>();
         }
 
-        SpawnPlane();
+        SetPlane();
     }
 
     // Update is called once per frame
@@ -36,27 +36,39 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void SpawnPlane(){
+    public void SpawnPlane(GameObject planeGO){
         if(startingPosition == null){
             startingPosition.position = new Vector2(0f, 0f);
         }
 
-        currPlaneGO = Instantiate(plane, startingPosition.position, startingPosition.rotation);
+        currPlaneGO = Instantiate(planeGO, startingPosition.position, startingPosition.rotation);
         cinemachine.Follow = currPlaneGO.transform;
         cinemachine.LookAt = currPlaneGO.transform;
     }
 
     public void SetScene(string scene){
+        playerStats.SavePlayer();
         SceneManager.LoadScene(scene);
     }
 
     public void SetPlane(){
         Destroy(currPlaneGO);
-        plane = planesManager.planes[playerStats.ownedPlanes[playerStats.currentPlane]].plane;
-        SpawnPlane();
+        plane = planesManager.planes[playerStats.ownedPlanes[PlayerVars.currentPlane]].plane;
+        SpawnPlane(plane);
     }
 
     public string GetCurrentSceneName(){
         return SceneManager.GetActiveScene().name;
+    }
+
+    public void DespawnCurrPlane(){
+        if(startingPosition == null){
+            startingPosition.position = new Vector2(0f, 0f);
+        }
+
+        Destroy(currPlaneGO);
+        currPlaneGO = null;
+        cinemachine.LookAt = startingPosition;
+        cinemachine.Follow = startingPosition;
     }
 }

@@ -8,12 +8,22 @@ public class PassengersManager : MonoBehaviour
     public PlayerStats playerStats;
     public int passengerPrice = 5;
 
+    float timeToNextPassenger = 0f;
+    float passengersInterval = 30f;
+
     void Start(){
         playerStats = GameObject.Find("GameManager").GetComponent<PlayerStats>();
     }
 
     void Update(){
         planeController = GameObject.FindObjectOfType<PlaneController>();
+
+        if(timeToNextPassenger + Time.deltaTime < passengersInterval){
+            timeToNextPassenger += Time.deltaTime;
+        }else{
+            timeToNextPassenger = 0f;
+            BuyPedsToHangar(1);
+        }
     }
 
     // Update is called once per frame
@@ -42,8 +52,8 @@ public class PassengersManager : MonoBehaviour
 
     public void BuyPedsToHangar(int count){
         if(playerStats.passengersWaiting + count <= playerStats.maxPassengers){
-            int price = passengerPrice * count;
-            playerStats.RemoveMoney(price);
+            //int price = passengerPrice * count;
+            //playerStats.RemoveMoney(price);
             playerStats.AddPassengers(count);
             playerStats.SavePlayer();
         }

@@ -3,28 +3,61 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public class PlayerVars{
+    [Header("Stats")]
+    public static int currentPlane = 0;
+}
+
 public class PlayerStats : MonoBehaviour
 {
     [Header("Stats")]
+    static List<int> expToLvl = new List<int>();
+    public PlanesManager planesManager;
+    public GameManager manager;
+
+    [Header("VarsCopied")]
     public int level = 0;
     public int playerExp = 0;
     public float money = 0;
     public float fuel = 0;
     public float fuelCapacity = 50;
-    public List<int> ownedPlanes;
+    public List<int> ownedPlanes = new List<int>();
+    //public List<int> publicOwnedPlanes;
     public string playerName = "";
-    public int[] expToLvl;
     public int passengersWaiting = 0;
     public int maxPassengers = 30;
-    public int currentPlane = 0;
-    public PlanesManager planesManager;
+    public string lastDateTime;
+    public string dateTime = System.DateTime.Now.ToString();
 
-    private GameManager manager;
+    void Awake(){
+        //PlayerVars.publicOwnedPlanes = ownedPlanes;
+        LoadPlayer();
+    }
+
+    void OnApplicationQuit() {
+        lastDateTime = System.DateTime.Now.ToString();
+        SaveSystem.SaveProgress(this);
+    }
 
     void Start(){
-        LoadPlayer();
+        expToLvl.Clear();
+        expToLvl.Add(0);
+        expToLvl.Add(50);
+        expToLvl.Add(100);
+        expToLvl.Add(150);
+        expToLvl.Add(200);
+        expToLvl.Add(300);
+        expToLvl.Add(450);
+
         GetLevel();
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        System.DateTime _date = System.DateTime.Parse(dateTime);
+    }
+
+    void Update(){
+        dateTime = System.DateTime.Now.ToString();
     }
 
     // Update is called once per frame
@@ -46,6 +79,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     public void SavePlayer(){
+        //SaveSystem.SaveProgress(this);
         SaveSystem.SaveProgress(this);
     }
 
@@ -55,11 +89,15 @@ public class PlayerStats : MonoBehaviour
         if(data != null){
             playerExp = data.exp;
             money = data.money;
-            ownedPlanes = data.ownedPlanes;
+            ownedPlanes.Clear();
+            for(int i = 0; i <= data.planesArray.Length - 1; i++){
+                ownedPlanes.Add(data.planesArray[i]);
+            }
             fuel = data.fuel;
             playerName = data.playerName;
             fuelCapacity = data.fuelCapacity;
             passengersWaiting = data.passengersWaiting;
+            lastDateTime = data.lastDateTime;
         }else{
             Debug.Log("Initializing new save.");
             money = 1000;
@@ -80,7 +118,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     public void GetLevel(){
-        for(int i = 0; i < expToLvl.Length - 1; i++){
+        for(int i = 0; i < expToLvl.Count - 1; i++){
             if(playerExp >= expToLvl[i] && playerExp < expToLvl[i + 1]){
                 level = i;
             }
@@ -126,7 +164,7 @@ public class PlayerStats : MonoBehaviour
     public void AddExp(int value){
         playerExp += value;
 
-        for(int i = 0; i < expToLvl.Length - 1; i++){
+        for(int i = 0; i < expToLvl.Count - 1; i++){
             if(playerExp >= expToLvl[i] && playerExp < expToLvl[i + 1]){
                 if(i > level){
                     level = i;
@@ -155,13 +193,14 @@ public class PlayerStats : MonoBehaviour
     public void BuyPlane(int planeNumber){
         RemoveMoney(planesManager.planes[planeNumber].price);
         ownedPlanes.Add(planeNumber);
+        SavePlayer();
     }
 
     public void NextPlane(){
-        if(currentPlane + 1 <= ownedPlanes.Count - 1){
-            currentPlane += 1;
+        if(PlayerVars.currentPlane + 1 <= ownedPlanes.Count - 1){
+            PlayerVars.currentPlane += 1;
         }else{
-            currentPlane = 0;
+            PlayerVars.currentPlane = 0;
         }
 
         manager.SetPlane();

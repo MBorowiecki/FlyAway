@@ -14,7 +14,8 @@ public class PlaneController : MonoBehaviour
 
     [Header("Fuel")]
     public float literPerThrust = 0.00008f;
-    static float liters = 23;
+    public static float liters = 0;
+    public float publicLiters = 0;
     public float maxLiters = 23;
 
     [Header("Others")]
@@ -87,6 +88,7 @@ public class PlaneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        publicLiters = liters;
         publicPassengers = currentPassengers;
         planeRB.centerOfMass = COM.localPosition;
 
@@ -148,10 +150,11 @@ public class PlaneController : MonoBehaviour
         }
 
         if(isDestroyed){
-            transform.position = destroyPosition;
-
             if(!startedDestroing)
                 StartCoroutine(Explosion());
+            else
+                transform.position = destroyPosition;
+                audioSource.volume = 0f;
         }
     }
 
@@ -178,6 +181,33 @@ public class PlaneController : MonoBehaviour
         }
     }
 
+    public float AddFuel(int count){
+        if(liters + count <= maxLiters){
+            liters += count;
+            return count;
+        }else{
+            float addedLiters = maxLiters - liters;
+            liters = maxLiters;
+            return addedLiters;
+        }
+    }
+
+    public float RemoveFuel(int count){
+        if(liters - count <= 0){
+            liters -= count;
+            return count;
+        }else{
+            Debug.Log("Cannot remove " + count + " fuel. There's not enough fuel.");
+            float removedFuel = liters;
+            liters = 0;
+            return removedFuel;
+        }
+    }
+
+    public void RemoveAllFuel(){
+        liters = 0;
+    }
+
     public void RemoveAllPassengers(){
         currentPassengers = 0;
     }
@@ -200,15 +230,19 @@ public class PlaneController : MonoBehaviour
     }
 
     IEnumerator Explosion(){
-        startedDestroing = true;
         destroyPosition = transform.position;
         GameObject effect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        RemoveAllPassengers();
+        RemoveAllFuel();
+        startedDestroing = true;
         planeSprite.sprite = null;
         frontWheelSprite.sprite = null;
         rearWheelSprite.sprite = null;
-        audioSource.volume = 0f;
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3.9f);
         Destroy(effect);
         Destroy(gameObject);
+
+        GameManager manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        manager.SetScene("Garage");
     }
 }

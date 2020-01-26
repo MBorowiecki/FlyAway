@@ -644,7 +644,7 @@ MonoBehaviour:
   frontWheelSprite: {fileID: 7910161608987921747}
   rearWheelSprite: {fileID: 7910161609618616066}
   playerStats: {fileID: 0}
-  pricePerMeter: 0.2
+  pricePerMeter: 0.5
   planeRB: {fileID: 0}
   throttleSlider: {fileID: 0}
   fuelSlider: {fileID: 0}

@@ -620,7 +620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250695630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9111116, y: 0.12, z: -10}
+  m_LocalPosition: {x: 11.869112, y: 0.613, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1254695892}
@@ -1379,7 +1379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9111116, y: 0.12, z: -10}
+  m_LocalPosition: {x: 11.869112, y: 0.613, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2806,17 +2806,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8aa5d2c38b07f4c9064255e0e07256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
-  playerExp: 0
-  money: 0
-  fuel: 0
-  fuelCapacity: 50
-  ownedPlanes: 
-  playerName: 
-  expToLvl: 
-  passengersWaiting: 0
-  maxPassengers: 30
-  currentPlane: 0
+  planesManager: {fileID: 965059561}
+  manager: {fileID: 965059557}
 --- !u!114 &965059560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2845,6 +2836,10 @@ MonoBehaviour:
   planes:
   - plane: {fileID: 7910161609461198066, guid: 04358f812504d5246b4395dec094676d, type: 3}
     price: 100
+    level: 0
+    name: CSS 152
+  - plane: {fileID: 5829999296612286385, guid: b1fc3bfbeb9d631449bee49207bc5521, type: 3}
+    price: 500
     level: 0
     name: CSS 152
 --- !u!1 &984058788
