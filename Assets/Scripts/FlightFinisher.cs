@@ -8,6 +8,7 @@ public class FlightFinisher : MonoBehaviour
     public PlaneController planeController;
 
     [Header("UI")]
+    public GameObject finishFlightButton;
     public GameObject finishLevelUI;
     public Text distanceTravelledText;
     public Text passengersDeliveredText;
@@ -26,10 +27,21 @@ public class FlightFinisher : MonoBehaviour
             });
         }
     }
+
+    void Update() {
+        if(finishFlightButton){
+            if (IsPlaneAbleToFinish()){
+                finishFlightButton.SetActive(true);
+            }else{
+                finishFlightButton.SetActive(false);
+            }
+        }
+    }
+
     // Start is called before the first frame update
     public void FinishFlight()
     {
-        if (planeController.planeRB.velocity.magnitude < 1f && planeController.planeRB.velocity.magnitude > -1f && planeController.altitude < 5f && planeController.altitude > -2f)
+        if (IsPlaneAbleToFinish())
         {
             float moneyEarned = planeController.distance / 100f * planeController.pricePerMeter * planeController.publicPassengers * planeController.pricePerPassenger;
             int expEarned = (int)Mathf.Floor(planeController.distance / 1000 * planeController.publicPassengers);
@@ -57,5 +69,9 @@ public class FlightFinisher : MonoBehaviour
             planeController.playerStats.AddMoney(moneyEarned);
             planeController.playerStats.AddExp(expEarned);
         }
+    }
+
+    bool IsPlaneAbleToFinish() {
+        return planeController.planeRB.velocity.magnitude < 1f && planeController.planeRB.velocity.magnitude > -1f && planeController.altitude < 5f && planeController.altitude > -2f;
     }
 }

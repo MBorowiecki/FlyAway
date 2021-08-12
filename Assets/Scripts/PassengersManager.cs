@@ -68,12 +68,7 @@ public class PassengersManager : MonoBehaviour
 
     public void BuyPedsToHangar(int count)
     {
-        if (playerStats.passengersWaiting + count <= playerStats.maxPassengers)
-        {
-            //int price = passengerPrice * count;
-            //playerStats.RemoveMoney(price);
-            playerStats.AddPassengers(count);
-            playerStats.SavePlayer();
-        }
+        playerStats.AddPassengers(count);
+        playerStats.SavePlayer();
     }
 }

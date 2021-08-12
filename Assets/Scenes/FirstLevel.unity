@@ -220,7 +220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9172305
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1255,8 +1255,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 4.4496}
+  m_SizeDelta: {x: 0, y: -8.8992}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &670743112
 MonoBehaviour:
@@ -1820,6 +1820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeController: {fileID: 0}
+  finishFlightButton: {fileID: 9172304}
   finishLevelUI: {fileID: 1726816970}
   distanceTravelledText: {fileID: 866151801}
   passengersDeliveredText: {fileID: 1413781639}
@@ -1843,14 +1844,14 @@ MonoBehaviour:
     price: 100
     level: 0
     name: CSS 152
-  - plane: {fileID: 5829999296612286385, guid: b1fc3bfbeb9d631449bee49207bc5521, type: 3}
-    price: 500
-    level: 0
-    name: CSS 152
   - plane: {fileID: 3583707820829597552, guid: 09c7632a22ccaa8cf85961143986b955, type: 3}
     price: 500
     level: 0
     name: CSS 425
+  - plane: {fileID: 5829999296612286385, guid: b1fc3bfbeb9d631449bee49207bc5521, type: 3}
+    price: 500
+    level: 0
+    name: CSS 152
 --- !u!1 &970982033
 GameObject:
   m_ObjectHideFlags: 0
