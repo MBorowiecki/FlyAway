@@ -32,6 +32,7 @@ public class PlaneController : MonoBehaviour
     public SpriteRenderer rearWheelSprite;
     public PlayerStats playerStats;
     public float pricePerMeter = .2f;
+    public float pricePerPassenger = 10f;
 
     public Rigidbody2D planeRB;
     private bool finishing = false;
@@ -55,6 +56,11 @@ public class PlaneController : MonoBehaviour
     static int currentPassengers = 0;
     public int publicPassengers;
 
+    [Header("Camera")]
+    public Cinemachine.CinemachineVirtualCamera cinemachine;
+    public float baseOrtographicSize = 10f;
+    public float maxOrtographicSize = 30f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,23 +70,28 @@ public class PlaneController : MonoBehaviour
         playerStats = GameObject.Find("GameManager").GetComponent<PlayerStats>();
         StartCoroutine(CountDistance());
 
-        if(throttleSlider == null){
+        if (throttleSlider == null)
+        {
             throttleSlider = GameObject.Find("ThrottleSlider").GetComponent<Slider>();
         }
 
-        if(fuelSlider == null){
+        if (fuelSlider == null)
+        {
             fuelSlider = GameObject.Find("FuelSlider").GetComponent<Slider>();
         }
 
-        if(planeSpeedText == null){
+        if (planeSpeedText == null)
+        {
             planeSpeedText = GameObject.Find("PlaneSpeedText").GetComponent<Text>();
         }
 
-        if(planeAltitude == null){
+        if (planeAltitude == null)
+        {
             planeAltitude = GameObject.Find("AltitudeText").GetComponent<Text>();
         }
 
-        if(planeThrottle == null){
+        if (planeThrottle == null)
+        {
             planeThrottle = GameObject.Find("ThrottleSliderText").GetComponent<Text>();
         }
     }
@@ -94,86 +105,116 @@ public class PlaneController : MonoBehaviour
 
         GameManager manager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
-        if(manager.GetCurrentSceneName() != "Garage"){
+        if (manager.GetCurrentSceneName() != "Garage")
+        {
             engineOff = false;
-        }else{
+        }
+        else
+        {
             engineOff = true;
         }
 
-        if(engineOff){
+        if (engineOff)
+        {
             audioSource.volume = 0f;
-        }else{
+        }
+        else
+        {
             audioSource.volume = 1f;
         }
 
-        /*if (Input.GetKey(KeyCode.LeftShift))
+        if (throttleSlider)
         {
-            throttle += .3f * Time.deltaTime;
+            throttle = throttleSlider.value;
             throttle = Mathf.Clamp(throttle, 0f, 1f);
         }
-
-        if (Input.GetKey(KeyCode.LeftControl))
-        {
-            throttle -= .3f * Time.deltaTime;
-            throttle = Mathf.Clamp(throttle, 0f, 1f);
-        }*/
-
-        throttle = throttleSlider.value;
-        throttle = Mathf.Clamp(throttle, 0f, 1f);
 
         altitude = 0f;
         int layerMask = LayerMask.GetMask("Ground");
         RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector3.up, Mathf.Infinity, layerMask);
 
-        if(hit.point != null){
+        if (hit.point != null)
+        {
             altitude = transform.position.y - hit.point.y;
         }
 
-        planeSpeedText.text = Mathf.Floor(Mathf.Abs(planeRB.velocity.magnitude * 3.6f)).ToString() + " km/h";
-        planeAltitude.text = Mathf.Floor(altitude).ToString() + " m";
-        planeThrottle.text = Mathf.Floor(throttle * 100f).ToString() + " %";
-        if(liters > 0f){
+        if (planeSpeedText && planeAltitude && planeThrottle)
+        {
+            planeSpeedText.text = Mathf.Floor(Mathf.Abs(planeRB.velocity.magnitude * 3.6f)).ToString() + " km/h";
+            planeAltitude.text = Mathf.Floor(altitude).ToString() + " m";
+            planeThrottle.text = Mathf.Floor(throttle * 100f).ToString() + " %";
+        }
+        if (liters > 0f)
+        {
             thrust = Mathf.Lerp(thrust, throttle * maxThrust, (thrust * Time.deltaTime * .000001f * thrustIncreaseCoefficient) + 0.0001f);
-        }else{
+        }
+        else
+        {
             thrust = Mathf.Lerp(thrust, 0f, (thrust * Time.deltaTime * .000001f * thrustIncreaseCoefficient) + 0.0001f);
         }
-        
+
         liters -= literPerThrust * thrust * Time.deltaTime;
 
         audioSource.pitch = Mathf.Clamp(Mathf.Lerp(audioSource.pitch, ((thrust / maxThrust) * (maxPitch - minPitch)) + minPitch, .1f), minPitch, maxPitch);
 
-        if(liters >= 0f){
-            fuelSlider.value = liters / maxLiters;
-        }else{
-            liters = 0f;
-            fuelSlider.value = 0f;
+        if (fuelSlider)
+        {
+            if (liters >= 0f)
+            {
+                fuelSlider.value = liters / maxLiters;
+            }
+            else
+            {
+                liters = 0f;
+                fuelSlider.value = 0f;
+            }
         }
 
-        if(isDestroyed){
-            if(!startedDestroing)
+        if (isDestroyed)
+        {
+            if (!startedDestroing)
                 StartCoroutine(Explosion());
             else
                 transform.position = destroyPosition;
-                audioSource.volume = 0f;
+            audioSource.volume = 0f;
         }
     }
 
-    public int AddPassengers(int count){
-        if(currentPassengers + count <= maxPassengers){
+    void FixedUpdate()
+    {
+        if (cinemachine)
+        {
+            cinemachine.m_Lens.OrthographicSize = (planeRB.velocity.magnitude / 100f) * (maxOrtographicSize - baseOrtographicSize) + baseOrtographicSize;
+            cinemachine.m_Lens.OrthographicSize = Mathf.Clamp(cinemachine.m_Lens.OrthographicSize, baseOrtographicSize, maxOrtographicSize);
+        }
+
+        planeRB.AddForceAtPosition(thrustPosition.transform.right * thrust * 10f, thrustPosition.position);
+    }
+
+    public int AddPassengers(int count)
+    {
+        if (currentPassengers + count <= maxPassengers)
+        {
             currentPassengers += count;
             return count;
-        }else{
+        }
+        else
+        {
             int addedPeds = maxPassengers - currentPassengers;
             currentPassengers = maxPassengers;
             return addedPeds;
         }
     }
 
-    public int RemovePassengers(int count){
-        if(currentPassengers - count <= 0){
+    public int RemovePassengers(int count)
+    {
+        if (currentPassengers - count <= 0)
+        {
             currentPassengers -= count;
             return count;
-        }else{
+        }
+        else
+        {
             Debug.Log("Cannot remove " + count + " passengers. There's not enough passengers.");
             int removedPeds = currentPassengers;
             currentPassengers = 0;
@@ -181,22 +222,30 @@ public class PlaneController : MonoBehaviour
         }
     }
 
-    public float AddFuel(int count){
-        if(liters + count <= maxLiters){
+    public float AddFuel(int count)
+    {
+        if (liters + count <= maxLiters)
+        {
             liters += count;
             return count;
-        }else{
+        }
+        else
+        {
             float addedLiters = maxLiters - liters;
             liters = maxLiters;
             return addedLiters;
         }
     }
 
-    public float RemoveFuel(int count){
-        if(liters - count <= 0){
+    public float RemoveFuel(int count)
+    {
+        if (liters - count <= 0)
+        {
             liters -= count;
             return count;
-        }else{
+        }
+        else
+        {
             Debug.Log("Cannot remove " + count + " fuel. There's not enough fuel.");
             float removedFuel = liters;
             liters = 0;
@@ -204,17 +253,14 @@ public class PlaneController : MonoBehaviour
         }
     }
 
-    public void RemoveAllFuel(){
+    public void RemoveAllFuel()
+    {
         liters = 0;
     }
 
-    public void RemoveAllPassengers(){
-        currentPassengers = 0;
-    }
-
-    void FixedUpdate()
+    public void RemoveAllPassengers()
     {
-        planeRB.AddForceAtPosition(thrustPosition.transform.right * thrust * 10f, thrustPosition.position);
+        currentPassengers = 0;
     }
 
     IEnumerator CountDistance()
@@ -223,13 +269,15 @@ public class PlaneController : MonoBehaviour
         {
             Vector3 planeLastPos = transform.position;
             yield return new WaitForSeconds(.001f);
-            if(altitude > 2f || altitude < -2f){
+            if (altitude > 2f || altitude < -2f)
+            {
                 distance += (transform.position - planeLastPos).magnitude;
             }
         }
     }
 
-    IEnumerator Explosion(){
+    IEnumerator Explosion()
+    {
         destroyPosition = transform.position;
         GameObject effect = Instantiate(explosionEffect, transform.position, Quaternion.identity);
         RemoveAllPassengers();

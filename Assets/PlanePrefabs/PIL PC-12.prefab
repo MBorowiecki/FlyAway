@@ -45,6 +45,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -123,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68a3202166e7084c88ccbcd92394c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liftForce: 0
   forcePosition: {fileID: 5829999297415235749}
   planeRB: {fileID: 5829999296612286390}
   wingArea: 5
@@ -178,7 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68a3202166e7084c88ccbcd92394c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liftForce: 0
   forcePosition: {fileID: 5829999295903561063}
   planeRB: {fileID: 5829999296612286390}
   wingArea: 25.8
@@ -295,6 +295,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -346,7 +348,7 @@ GameObject:
   - component: {fileID: 5829999296612286384}
   m_Layer: 0
   m_Name: PIL PC-12
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -410,6 +412,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -463,6 +467,7 @@ MonoBehaviour:
   thrustPosition: {fileID: 5829999297097089242}
   thrustIncreaseCoefficient: 1000
   literPerThrust: 0.00015
+  publicLiters: 0
   maxLiters: 40
   COM: {fileID: 5829999297194814375}
   distance: 0
@@ -474,7 +479,8 @@ MonoBehaviour:
   frontWheelSprite: {fileID: 5829999295737077264}
   rearWheelSprite: {fileID: 5829999296383564865}
   playerStats: {fileID: 0}
-  pricePerMeter: 0.8
+  pricePerMeter: 0.4
+  pricePerPassenger: 1
   planeRB: {fileID: 0}
   throttleSlider: {fileID: 0}
   fuelSlider: {fileID: 0}
@@ -486,6 +492,9 @@ MonoBehaviour:
   engineOff: 0
   maxPassengers: 9
   publicPassengers: 0
+  cinemachine: {fileID: 0}
+  baseOrtographicSize: 10
+  maxOrtographicSize: 20
 --- !u!82 &5829999296612286391
 AudioSource:
   m_ObjectHideFlags: 0

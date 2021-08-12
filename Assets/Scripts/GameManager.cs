@@ -14,16 +14,19 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(currPlaneGO == null){
+        if (currPlaneGO == null)
+        {
             cinemachine.Follow = startingPosition;
             cinemachine.LookAt = startingPosition;
         }
 
-        if(planesManager == null){
+        if (planesManager == null)
+        {
             planesManager = gameObject.GetComponent<PlanesManager>();
         }
 
-        if(playerStats == null){
+        if (playerStats == null)
+        {
             playerStats = gameObject.GetComponent<PlayerStats>();
         }
 
@@ -33,36 +36,44 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void SpawnPlane(GameObject planeGO){
-        if(startingPosition == null){
+    public void SpawnPlane(GameObject planeGO)
+    {
+        if (startingPosition == null)
+        {
             startingPosition.position = new Vector2(0f, 0f);
         }
 
         currPlaneGO = Instantiate(planeGO, startingPosition.position, startingPosition.rotation);
         cinemachine.Follow = currPlaneGO.transform;
         cinemachine.LookAt = currPlaneGO.transform;
+        currPlaneGO.GetComponent<PlaneController>().cinemachine = cinemachine;
     }
 
-    public void SetScene(string scene){
+    public void SetScene(string scene)
+    {
         playerStats.SavePlayer();
         SceneManager.LoadScene(scene);
     }
 
-    public void SetPlane(){
+    public void SetPlane()
+    {
         Destroy(currPlaneGO);
         plane = planesManager.planes[playerStats.ownedPlanes[PlayerVars.currentPlane]].plane;
         SpawnPlane(plane);
     }
 
-    public string GetCurrentSceneName(){
+    public string GetCurrentSceneName()
+    {
         return SceneManager.GetActiveScene().name;
     }
 
-    public void DespawnCurrPlane(){
-        if(startingPosition == null){
+    public void DespawnCurrPlane()
+    {
+        if (startingPosition == null)
+        {
             startingPosition.position = new Vector2(0f, 0f);
         }
 

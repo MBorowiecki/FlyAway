@@ -45,16 +45,24 @@ public class Suspension : MonoBehaviour
 
         spriteRenderer.sprite = wheelGraphics;
         lastFramePlaneYVel = planeRB.velocity.y;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
         Button brakesButton = GameObject.Find("BrakesButton").GetComponent<Button>();
+        Image[] brakesIcons = brakesButton.GetComponentsInChildren<Image>();
+        Color brakesActiveColor = new Color(.062f, .643f, .2f, 1);
+        Color brakesInactiveColor = new Color(255, 255, 255, 1);
 
-        if(!changingBrakes){
-            brakesButton.onClick.AddListener(delegate {StartCoroutine(ChangeBrakesStatus());});
-        }
+        brakesButton.onClick.AddListener(() =>
+        {
+            isBraking = !isBraking;
+
+            foreach (Image image in brakesIcons)
+            {
+                if (image.gameObject.transform.parent.name == brakesButton.gameObject.name)
+                {
+                    image.color = isBraking ? brakesActiveColor : brakesInactiveColor;
+                }
+            }
+        });
     }
 
     void FixedUpdate()
@@ -108,19 +116,11 @@ public class Suspension : MonoBehaviour
             wheelTransform.Rotate(new Vector3(0f, 0f, rotations * -planeRB.velocity.normalized.x));
         }
 
-        if(Mathf.Abs(lastFramePlaneYVel) > planeController.destroyVel && isGrounded)
+        if (Mathf.Abs(lastFramePlaneYVel) > planeController.destroyVel && isGrounded)
         {
             planeController.isDestroyed = true;
         }
 
         lastFramePlaneYVel = planeRB.velocity.y;
-    }
-
-    IEnumerator ChangeBrakesStatus()
-    {
-        changingBrakes = true;
-        isBraking = !isBraking;
-        yield return new WaitForSeconds(.5f);
-        changingBrakes = false;
     }
 }

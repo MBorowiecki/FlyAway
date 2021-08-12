@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910161607761934565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43, y: 0.006, z: 0}
+  m_LocalPosition: {x: 1.98, y: -0.573, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7910161609461198065}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910161607797773210}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.68, y: -0.082, z: 0}
+  m_LocalPosition: {x: 4.81, y: -0.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7910161609461198065}
@@ -85,7 +85,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910161607833585277}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.329, y: -0.561, z: 0}
+  m_LocalPosition: {x: 3.88, y: -1.336, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7910161608987921580}
@@ -108,19 +108,19 @@ MonoBehaviour:
   wheelPoint: {fileID: 7910161608600213002}
   planeRB: {fileID: 7910161609461198069}
   planeTransform: {fileID: 7910161609461198065}
-  rideHeight: 0.5
+  rideHeight: 1.2
   tireRadius: 0.125
   brakeForce: 20000
   brakingWheel: 1
   isBraking: 1
   isGrounded: 0
   minLength: 0.15
-  springForce: 6000
+  springForce: 17000
   springCompression: 0
   lastLength: 0
   springLength: 0
   springVelocity: 0
-  damperStiffness: 1000
+  damperStiffness: 8500
   damperForce: 0
   wheelGraphics: {fileID: 21300000, guid: 1a48ef02f77c3624c90eb96d016e1091, type: 3}
   spriteRenderer: {fileID: 7910161608987921747}
@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910161608600213003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.311, y: -0.384, z: 0}
+  m_LocalPosition: {x: 3.87, y: -1.245, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7910161609461198065}
@@ -180,7 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910161608629964845}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.347, y: -0.453, z: 0}
+  m_LocalPosition: {x: 1.12, y: -1.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7910161609618616067}
@@ -203,19 +203,19 @@ MonoBehaviour:
   wheelPoint: {fileID: 7910161608732383755}
   planeRB: {fileID: 7910161609461198069}
   planeTransform: {fileID: 7910161609461198065}
-  rideHeight: 0.4
+  rideHeight: 1.2
   tireRadius: 0.125
   brakeForce: 0
   brakingWheel: 0
   isBraking: 1
   isGrounded: 0
   minLength: 0.125
-  springForce: 5000
+  springForce: 12000
   springCompression: 0
   lastLength: 0
   springLength: 0
   springVelocity: 0
-  damperStiffness: 1000
+  damperStiffness: 6000
   damperForce: 0
   wheelGraphics: {fileID: 21300000, guid: bd35e3eeb96411e41b401ba49a4a547a, type: 3}
   spriteRenderer: {fileID: 7910161609618616066}
@@ -244,7 +244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910161608652987367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.223, y: -0.116, z: 0}
+  m_LocalPosition: {x: -3.91, y: -0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7910161609461198065}
@@ -274,7 +274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910161608732383748}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.351, y: -0.26, z: 0}
+  m_LocalPosition: {x: 1.4400089, y: -1.26, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7910161609461198065}
@@ -304,7 +304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910161608752244261}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.677, y: 0.251, z: 0}
+  m_LocalPosition: {x: 1.69, y: 0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7910161609461198065}
@@ -336,7 +336,7 @@ Transform:
   m_GameObject: {fileID: 7910161608987921581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 7910161607833585276}
   m_RootOrder: 0
@@ -355,6 +355,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -415,7 +417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910161609139204210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.24, y: -0.096, z: 0}
+  m_LocalPosition: {x: -3.91, y: -0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7910161609461198065}
@@ -433,16 +435,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68a3202166e7084c88ccbcd92394c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liftForce: 0
   forcePosition: {fileID: 7910161608652987366}
   planeRB: {fileID: 7910161609461198069}
   wingArea: 4
   wingSpan: 3
   controlableWing: 1
-  maxRotation: 100
+  maxRotation: 300
   angle: 0
-  dragCoefficient: 50
-  liftCoefficient: 3
+  dragCoefficient: 100
+  liftCoefficient: 20
   pitchSlider: {fileID: 0}
   pitch: {fileID: 0}
 --- !u!1 &7910161609178610294
@@ -470,7 +471,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7910161609178610294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.653, y: 0.252, z: 0}
+  m_LocalPosition: {x: 1.69, y: 0.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7910161609461198065}
@@ -488,7 +489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68a3202166e7084c88ccbcd92394c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liftForce: 0
   forcePosition: {fileID: 7910161608752244260}
   planeRB: {fileID: 7910161609461198069}
   wingArea: 15
@@ -496,8 +496,8 @@ MonoBehaviour:
   controlableWing: 0
   maxRotation: 0
   angle: 0
-  dragCoefficient: 80
-  liftCoefficient: 3
+  dragCoefficient: 160
+  liftCoefficient: 20
   pitchSlider: {fileID: 0}
   pitch: {fileID: 0}
 --- !u!1 &7910161609461198066
@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 7910161609461198068}
   m_Layer: 0
   m_Name: C 152
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -530,7 +530,7 @@ Transform:
   m_GameObject: {fileID: 7910161609461198066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.12, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6876, y: 0.6876, z: 0.6876}
   m_Children:
   - {fileID: 7910161609178610293}
   - {fileID: 7910161608752244260}
@@ -557,7 +557,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 531
+  m_Mass: 490
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -580,6 +580,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -604,7 +606,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 399bd97e9c087004290c25d6dc9d2d19, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3720c943e5a5cdb50a145da5299edfe0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -633,6 +635,7 @@ MonoBehaviour:
   thrustPosition: {fileID: 7910161607797773209}
   thrustIncreaseCoefficient: 10000
   literPerThrust: 0.0008
+  publicLiters: 0
   maxLiters: 23
   COM: {fileID: 7910161607761934564}
   distance: 0
@@ -644,7 +647,8 @@ MonoBehaviour:
   frontWheelSprite: {fileID: 7910161608987921747}
   rearWheelSprite: {fileID: 7910161609618616066}
   playerStats: {fileID: 0}
-  pricePerMeter: 0.5
+  pricePerMeter: 2
+  pricePerPassenger: 5
   planeRB: {fileID: 0}
   throttleSlider: {fileID: 0}
   fuelSlider: {fileID: 0}
@@ -654,8 +658,11 @@ MonoBehaviour:
   minPitch: 0.5
   maxPitch: 1
   engineOff: 0
-  maxPassengers: 2
+  maxPassengers: 3
   publicPassengers: 0
+  cinemachine: {fileID: 0}
+  baseOrtographicSize: 20
+  maxOrtographicSize: 40
 --- !u!60 &7910161609461198071
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -673,7 +680,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.7566667, y: 1.2966666}
+    oldSize: {x: 10.6, y: 3.62}
     newSize: {x: 10, y: 7.51}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -681,147 +688,130 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.705, y: -0.15833333}
-      - {x: 1.6983334, y: -0.13166668}
-      - {x: 1.7616667, y: -0.09166667}
-      - {x: 1.7916667, y: -0.061666667}
-      - {x: 1.7950001, y: -0.05166667}
-      - {x: 1.7950001, y: -0.045}
-      - {x: 1.7583333, y: -0.011666667}
-      - {x: 1.6983334, y: 0.021666666}
-      - {x: 1.6983334, y: 0.115}
-      - {x: 1.6916667, y: 0.20833334}
-      - {x: 1.6916667, y: 0.28833333}
-      - {x: 1.6550001, y: 0.305}
-      - {x: 1.6516668, y: 0.2916667}
-      - {x: 1.6383333, y: 0.038333334}
-      - {x: 1.605, y: 0.048333336}
-      - {x: 1.3316667, y: 0.061666667}
-      - {x: 1.2583333, y: 0.065000005}
-      - {x: 1.1850001, y: 0.065000005}
-      - {x: 1.1816667, y: 0.07833333}
-      - {x: 1.135, y: 0.13166668}
-      - {x: 1.0683334, y: 0.20166667}
-      - {x: 0.98833334, y: 0.26500002}
-      - {x: 0.93833333, y: 0.29833335}
-      - {x: 0.855, y: 0.30833334}
-      - {x: 0.725, y: 0.31166667}
-      - {x: 0.67833334, y: 0.30833334}
-      - {x: 0.61833334, y: 0.30166668}
-      - {x: 0.565, y: 0.29500002}
-      - {x: 0.47833335, y: 0.28166667}
-      - {x: 0.47500002, y: 0.2916667}
-      - {x: 0.43166667, y: 0.275}
-      - {x: 0.3516667, y: 0.2616667}
-      - {x: 0.24833333, y: 0.24166667}
-      - {x: 0.185, y: 0.21833333}
-      - {x: 0.11166667, y: 0.19500001}
-      - {x: 0.105000004, y: 0.18833333}
-      - {x: 0.108333334, y: 0.175}
-      - {x: 0.12833333, y: 0.175}
-      - {x: 0.215, y: 0.17833334}
-      - {x: 0.21833333, y: 0.16833334}
-      - {x: 0.13166668, y: 0.125}
-      - {x: 0.068333335, y: 0.08166667}
-      - {x: 0.005, y: 0.035}
-      - {x: -0.015000001, y: 0.025}
-      - {x: -0.185, y: 0.015000001}
-      - {x: -0.28833333, y: 0.021666666}
-      - {x: -0.54833335, y: 0.041666668}
-      - {x: -0.62833333, y: 0.048333336}
-      - {x: -0.70500004, y: 0.055}
-      - {x: -0.865, y: 0.068333335}
-      - {x: -1.1016667, y: 0.08833334}
-      - {x: -1.135, y: 0.09833334}
-      - {x: -1.325, y: 0.315}
-      - {x: -1.395, y: 0.40166667}
-      - {x: -1.5183333, y: 0.535}
-      - {x: -1.5250001, y: 0.555}
-      - {x: -1.5783334, y: 0.60833335}
-      - {x: -1.5716667, y: 0.635}
-      - {x: -1.585, y: 0.6483334}
-      - {x: -1.6283333, y: 0.6483334}
-      - {x: -1.6383333, y: 0.6416667}
-      - {x: -1.6483334, y: 0.595}
-      - {x: -1.715, y: 0.5916667}
-      - {x: -1.8616667, y: 0.5816667}
-      - {x: -1.8783333, y: 0.565}
-      - {x: -1.8783333, y: 0.53833336}
-      - {x: -1.875, y: 0.535}
-      - {x: -1.8383334, y: 0.505}
-      - {x: -1.825, y: 0.46833333}
-      - {x: -1.8116667, y: 0.43833333}
-      - {x: -1.765, y: 0.3216667}
-      - {x: -1.735, y: 0.245}
-      - {x: -1.6683334, y: 0.08166667}
-      - {x: -1.6316667, y: -0.011666667}
-      - {x: -1.6183333, y: -0.038333334}
-      - {x: -1.6183333, y: -0.14500001}
-      - {x: -1.605, y: -0.16166668}
-      - {x: -1.565, y: -0.18833333}
-      - {x: -1.5416667, y: -0.20166667}
-      - {x: -1.4716667, y: -0.22166668}
-      - {x: -1.4050001, y: -0.22833334}
-      - {x: -1.3483334, y: -0.23833334}
-      - {x: -1.3216667, y: -0.23833334}
-      - {x: -1.3216667, y: -0.28166667}
-      - {x: -1.315, y: -0.28833333}
-      - {x: -1.3083334, y: -0.28833333}
-      - {x: -1.2183334, y: -0.25166667}
-      - {x: -1.125, y: -0.255}
-      - {x: -1.075, y: -0.25833333}
-      - {x: -0.8883334, y: -0.27166668}
-      - {x: -0.625, y: -0.28833333}
-      - {x: -0.5216667, y: -0.29500002}
-      - {x: -0.37833333, y: -0.305}
-      - {x: -0.23833334, y: -0.315}
-      - {x: -0.135, y: -0.3216667}
-      - {x: 0.19166668, y: -0.345}
-      - {x: 0.34166667, y: -0.35500002}
-      - {x: 0.3516667, y: -0.36166668}
-      - {x: 0.365, y: -0.39833334}
-      - {x: 0.3816667, y: -0.39166668}
-      - {x: 0.395, y: -0.37833333}
-      - {x: 0.40166667, y: -0.35833335}
-      - {x: 0.49166667, y: -0.36833334}
-      - {x: 0.53833336, y: -0.365}
-      - {x: 0.5683333, y: -0.36833334}
-      - {x: 0.62166667, y: -0.38833335}
-      - {x: 0.70500004, y: -0.40166667}
-      - {x: 0.745, y: -0.39833334}
-      - {x: 0.76166666, y: -0.39166668}
-      - {x: 0.77500004, y: -0.37833333}
-      - {x: 0.915, y: -0.3816667}
-      - {x: 1.0083333, y: -0.375}
-      - {x: 1.015, y: -0.41833335}
-      - {x: 1.0550001, y: -0.39833334}
-      - {x: 1.0583334, y: -0.37166667}
-      - {x: 1.1316667, y: -0.36833334}
-      - {x: 1.1416667, y: -0.37833333}
-      - {x: 1.2383333, y: -0.37166667}
-      - {x: 1.2683333, y: -0.32833335}
-      - {x: 1.3016667, y: -0.32833335}
-      - {x: 1.3183334, y: -0.315}
-      - {x: 1.3616667, y: -0.3216667}
-      - {x: 1.3716667, y: -0.3216667}
-      - {x: 1.4583334, y: -0.30166668}
-      - {x: 1.455, y: -0.31833333}
-      - {x: 1.4816667, y: -0.335}
-      - {x: 1.495, y: -0.335}
-      - {x: 1.5116667, y: -0.29500002}
-      - {x: 1.5350001, y: -0.285}
-      - {x: 1.565, y: -0.26833335}
-      - {x: 1.5916667, y: -0.245}
-      - {x: 1.6383333, y: -0.18166667}
-      - {x: 1.6516668, y: -0.155}
-      - {x: 1.6550001, y: -0.25166667}
-      - {x: 1.6616668, y: -0.29833335}
-      - {x: 1.6683334, y: -0.39166668}
-      - {x: 1.6750001, y: -0.45166668}
-      - {x: 1.6816667, y: -0.45833334}
-      - {x: 1.6916667, y: -0.455}
-      - {x: 1.6983334, y: -0.255}
-      - {x: 1.6983334, y: -0.15833333}
+    - - {x: 4.87, y: -1.17}
+      - {x: 4.87, y: -0.65}
+      - {x: 4.91, y: -0.65999997}
+      - {x: 5, y: -0.63}
+      - {x: 5.21, y: -0.52}
+      - {x: 5.2999997, y: -0.45999998}
+      - {x: 5.2999997, y: -0.42}
+      - {x: 5.2599998, y: -0.39}
+      - {x: 5.19, y: -0.37}
+      - {x: 4.87, y: -0.26999998}
+      - {x: 4.87, y: 0.42}
+      - {x: 4.8599997, y: 0.57}
+      - {x: 4.8399997, y: 0.88}
+      - {x: 4.81, y: 0.93}
+      - {x: 4.74, y: 0.9}
+      - {x: 4.74, y: 0.81}
+      - {x: 4.72, y: 0.55}
+      - {x: 4.71, y: 0.34}
+      - {x: 4.64, y: -0.19}
+      - {x: 4.61, y: -0.17999999}
+      - {x: 4.5, y: -0.14999999}
+      - {x: 4.29, y: -0.12}
+      - {x: 4.0699997, y: -0.099999994}
+      - {x: 3.9199998, y: -0.089999996}
+      - {x: 3.74, y: -0.08}
+      - {x: 3.52, y: -0.07}
+      - {x: 3.3899999, y: -0.01}
+      - {x: 3.33, y: -0.03}
+      - {x: 3.1, y: 0.17999999}
+      - {x: 2.8799999, y: 0.38}
+      - {x: 2.55, y: 0.66999996}
+      - {x: 2.5, y: 0.68}
+      - {x: 2.32, y: 0.7}
+      - {x: 2.2, y: 0.71}
+      - {x: 1.5999999, y: 0.71}
+      - {x: 1.4599999, y: 0.7}
+      - {x: 1.36, y: 0.69}
+      - {x: 1.22, y: 0.66999996}
+      - {x: 1.16, y: 0.65999997}
+      - {x: 1, y: 0.63}
+      - {x: 0.88, y: 0.61}
+      - {x: 0.77, y: 0.57}
+      - {x: 0.53999996, y: 0.48}
+      - {x: 0.37, y: 0.39}
+      - {x: 0.38, y: 0.35999998}
+      - {x: 0.47, y: 0.29}
+      - {x: 0.12, y: 0.12}
+      - {x: 0.06, y: 0.08}
+      - {x: -0.03, y: 0.01}
+      - {x: -0.04, y: -0.01}
+      - {x: -0.71, y: -0.01}
+      - {x: -0.71999997, y: 0}
+      - {x: -0.79999995, y: 0.01}
+      - {x: -1.11, y: 0.049999997}
+      - {x: -2.06, y: 0.17}
+      - {x: -2.22, y: 0.19}
+      - {x: -3.12, y: 0.31}
+      - {x: -3.3, y: 0.34}
+      - {x: -3.3799999, y: 0.42999998}
+      - {x: -3.9399998, y: 1.12}
+      - {x: -4.02, y: 1.23}
+      - {x: -4.1, y: 1.3299999}
+      - {x: -4.42, y: 1.7199999}
+      - {x: -4.5, y: 1.81}
+      - {x: -5.1099997, y: 1.81}
+      - {x: -5.24, y: 1.8}
+      - {x: -5.27, y: 1.79}
+      - {x: -5.2999997, y: 1.76}
+      - {x: -5.2999997, y: 1.64}
+      - {x: -5.04, y: 0.98999995}
+      - {x: -4.7799997, y: 0.29999998}
+      - {x: -4.72, y: 0.14}
+      - {x: -4.7, y: 0.11}
+      - {x: -4.7, y: -0.32}
+      - {x: -4.69, y: -0.34}
+      - {x: -4.5299997, y: -0.38}
+      - {x: -4.41, y: -0.47}
+      - {x: -4.33, y: -0.48}
+      - {x: -3.9299998, y: -0.57}
+      - {x: -3.6999998, y: -0.59999996}
+      - {x: -3.3899999, y: -0.64}
+      - {x: -3, y: -0.69}
+      - {x: -2.85, y: -0.71}
+      - {x: -2.46, y: -0.76}
+      - {x: -2.31, y: -0.78}
+      - {x: -2, y: -0.82}
+      - {x: -1.8399999, y: -0.84}
+      - {x: -1.4599999, y: -0.89}
+      - {x: -1.3, y: -0.90999997}
+      - {x: -1.0699999, y: -0.94}
+      - {x: -0.91999996, y: -0.96}
+      - {x: -0.69, y: -0.98999995}
+      - {x: -0.53, y: -1.01}
+      - {x: -0.11, y: -1.06}
+      - {x: 0.69, y: -1.15}
+      - {x: 0.78999996, y: -1.16}
+      - {x: 1.0699999, y: -1.1899999}
+      - {x: 1.5, y: -1.23}
+      - {x: 1.63, y: -1.24}
+      - {x: 1.79, y: -1.25}
+      - {x: 3.54, y: -1.25}
+      - {x: 3.6899998, y: -1.24}
+      - {x: 3.87, y: -1.22}
+      - {x: 3.99, y: -1.1999999}
+      - {x: 4.04, y: -1.1899999}
+      - {x: 4.12, y: -1.17}
+      - {x: 4.25, y: -1.14}
+      - {x: 4.37, y: -1.1}
+      - {x: 4.43, y: -1.0699999}
+      - {x: 4.49, y: -1.02}
+      - {x: 4.5499997, y: -0.96}
+      - {x: 4.63, y: -0.84999996}
+      - {x: 4.68, y: -0.75}
+      - {x: 4.71, y: -0.64}
+      - {x: 4.71, y: -1.14}
+      - {x: 4.72, y: -1.15}
+      - {x: 4.72, y: -1.52}
+      - {x: 4.74, y: -1.78}
+      - {x: 4.7599998, y: -1.81}
+      - {x: 4.8199997, y: -1.81}
+      - {x: 4.8399997, y: -1.8}
+      - {x: 4.85, y: -1.62}
+      - {x: 4.8599997, y: -1.51}
+      - {x: 4.8599997, y: -1.18}
 --- !u!82 &7910161609461198068
 AudioSource:
   m_ObjectHideFlags: 0
@@ -944,7 +934,7 @@ Transform:
   m_GameObject: {fileID: 7910161609618616092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 7910161608629964844}
   m_RootOrder: 0
@@ -963,6 +953,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class WingLift : MonoBehaviour
 {
-    public float liftForce;
     public Transform forcePosition;
     public Rigidbody2D planeRB;
 
@@ -31,11 +30,13 @@ public class WingLift : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(pitchSlider == null){
+        if (pitchSlider == null)
+        {
             pitchSlider = GameObject.Find("PitchSlider").GetComponent<Slider>();
         }
 
-        if(pitch == null){
+        if (pitch == null)
+        {
             pitch = GameObject.Find("PitchSliderText").GetComponent<Text>();
         }
     }
@@ -43,7 +44,7 @@ public class WingLift : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void FixedUpdate()
@@ -52,7 +53,7 @@ public class WingLift : MonoBehaviour
         Vector2 localVelocity = transform.InverseTransformDirection(planeRB.velocity);
         angleOfAttack = Mathf.Atan2(-localVelocity.y, localVelocity.x);
 
-        if (controlableWing)
+        if (controlableWing && pitchSlider)
         {
             angle = Mathf.Clamp(Mathf.Atan2((transform.right * Mathf.Lerp(transform.rotation.z, maxRotation * pitchSlider.value, .05f)).x, localVelocity.x), -10, 10);
 

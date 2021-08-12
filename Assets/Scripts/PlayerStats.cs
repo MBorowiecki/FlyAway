@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class PlayerVars{
+public class PlayerVars
+{
     [Header("Stats")]
     public static int currentPlane = 0;
 }
@@ -14,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     [Header("Stats")]
     static List<int> expToLvl = new List<int>();
     public PlanesManager planesManager;
+    public PassengersManager passengersManager;
     public GameManager manager;
 
     [Header("VarsCopied")]
@@ -26,21 +28,24 @@ public class PlayerStats : MonoBehaviour
     //public List<int> publicOwnedPlanes;
     public string playerName = "";
     public int passengersWaiting = 0;
-    public int maxPassengers = 30;
+    public int maxPassengers = 100;
     public string lastDateTime;
     public string dateTime = System.DateTime.Now.ToString();
 
-    void Awake(){
+    void Awake()
+    {
         //PlayerVars.publicOwnedPlanes = ownedPlanes;
         LoadPlayer();
     }
 
-    void OnApplicationQuit() {
+    void OnApplicationQuit()
+    {
         lastDateTime = System.DateTime.Now.ToString();
         SaveSystem.SaveProgress(this);
     }
 
-    void Start(){
+    void Start()
+    {
         expToLvl.Clear();
         expToLvl.Add(0);
         expToLvl.Add(50);
@@ -56,14 +61,16 @@ public class PlayerStats : MonoBehaviour
         System.DateTime _date = System.DateTime.Parse(dateTime);
     }
 
-    void Update(){
+    void Update()
+    {
         dateTime = System.DateTime.Now.ToString();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(manager.GetCurrentSceneName() == "Garage"){
+        if (manager.GetCurrentSceneName() == "Garage")
+        {
             Text moneyText = GameObject.Find("MoneyText").GetComponent<Text>();
             Text expText = GameObject.Find("ExpText").GetComponent<Text>();
             Text fuelText = GameObject.Find("FuelText").GetComponent<Text>();
@@ -78,19 +85,23 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void SavePlayer(){
+    public void SavePlayer()
+    {
         //SaveSystem.SaveProgress(this);
         SaveSystem.SaveProgress(this);
     }
 
-    public void LoadPlayer(){
+    public void LoadPlayer()
+    {
         SaveData data = SaveSystem.LoadData();
 
-        if(data != null){
+        if (data != null)
+        {
             playerExp = data.exp;
             money = data.money;
             ownedPlanes.Clear();
-            for(int i = 0; i <= data.planesArray.Length - 1; i++){
+            for (int i = 0; i <= data.planesArray.Length - 1; i++)
+            {
                 ownedPlanes.Add(data.planesArray[i]);
             }
             fuel = data.fuel;
@@ -98,7 +109,16 @@ public class PlayerStats : MonoBehaviour
             fuelCapacity = data.fuelCapacity;
             passengersWaiting = data.passengersWaiting;
             lastDateTime = data.lastDateTime;
-        }else{
+
+            float totalInactiveTime = (float)(System.DateTime.Now.Subtract(System.DateTime.Parse(lastDateTime)).TotalSeconds);
+            float passengersToAdd = totalInactiveTime / passengersManager.passengersInterval;
+
+            AddPassengers(Mathf.FloorToInt(passengersToAdd));
+
+            passengersManager.timeToNextPassenger = passengersManager.passengersInterval - (totalInactiveTime - Mathf.FloorToInt(passengersToAdd * passengersManager.passengersInterval));
+        }
+        else
+        {
             Debug.Log("Initializing new save.");
             money = 1000;
             playerExp = 0;
@@ -107,66 +127,87 @@ public class PlayerStats : MonoBehaviour
             passengersWaiting = maxPassengers;
             ownedPlanes.Clear();
             ownedPlanes.Add(0);
-            
+
             SavePlayer();
         }
     }
 
-    public void ResetProgress(){
+    public void ResetProgress()
+    {
         SaveSystem.ResetProgress();
         LoadPlayer();
     }
 
-    public void GetLevel(){
-        for(int i = 0; i < expToLvl.Count - 1; i++){
-            if(playerExp >= expToLvl[i] && playerExp < expToLvl[i + 1]){
+    public void GetLevel()
+    {
+        for (int i = 0; i < expToLvl.Count - 1; i++)
+        {
+            if (playerExp >= expToLvl[i] && playerExp < expToLvl[i + 1])
+            {
                 level = i;
             }
         }
     }
 
-    public void RemoveFuel(float value){
-        if(fuel - value >= 0){
+    public void RemoveFuel(float value)
+    {
+        if (fuel - value >= 0)
+        {
             fuel -= value;
-        }else{
+        }
+        else
+        {
             fuel = 0f;
         }
 
         SavePlayer();
     }
 
-    public void AddFuel(float value){
-        if(fuel + value <= fuelCapacity){
+    public void AddFuel(float value)
+    {
+        if (fuel + value <= fuelCapacity)
+        {
             fuel += value;
-        }else{
+        }
+        else
+        {
             fuel = fuelCapacity;
         }
-        
+
         SavePlayer();
     }
 
-    public void AddMoney(float value){
+    public void AddMoney(float value)
+    {
         money += value;
 
         SavePlayer();
     }
 
-    public void RemoveMoney(float value){
-        if(money - value > 0f){
+    public void RemoveMoney(float value)
+    {
+        if (money - value > 0f)
+        {
             money -= value;
-        }else{
+        }
+        else
+        {
             money = 0f;
         }
 
         SavePlayer();
     }
 
-    public void AddExp(int value){
+    public void AddExp(int value)
+    {
         playerExp += value;
 
-        for(int i = 0; i < expToLvl.Count - 1; i++){
-            if(playerExp >= expToLvl[i] && playerExp < expToLvl[i + 1]){
-                if(i > level){
+        for (int i = 0; i < expToLvl.Count - 1; i++)
+        {
+            if (playerExp >= expToLvl[i] && playerExp < expToLvl[i + 1])
+            {
+                if (i > level)
+                {
                     level = i;
                 }
             }
@@ -174,32 +215,45 @@ public class PlayerStats : MonoBehaviour
         SavePlayer();
     }
 
-    public void RemovePassengers(int value){
-        if(passengersWaiting - value >= 0){
+    public void RemovePassengers(int value)
+    {
+        if (passengersWaiting - value >= 0)
+        {
             passengersWaiting -= value;
-        }else{
+        }
+        else
+        {
             passengersWaiting = 0;
         }
     }
 
-    public void AddPassengers(int value){
-        if(passengersWaiting + value <= maxPassengers){
+    public void AddPassengers(int value)
+    {
+        if (passengersWaiting + value <= maxPassengers)
+        {
             passengersWaiting += value;
-        }else{
+        }
+        else
+        {
             passengersWaiting = maxPassengers;
         }
     }
 
-    public void BuyPlane(int planeNumber){
+    public void BuyPlane(int planeNumber)
+    {
         RemoveMoney(planesManager.planes[planeNumber].price);
         ownedPlanes.Add(planeNumber);
         SavePlayer();
     }
 
-    public void NextPlane(){
-        if(PlayerVars.currentPlane + 1 <= ownedPlanes.Count - 1){
+    public void NextPlane()
+    {
+        if (PlayerVars.currentPlane + 1 <= ownedPlanes.Count - 1)
+        {
             PlayerVars.currentPlane += 1;
-        }else{
+        }
+        else
+        {
             PlayerVars.currentPlane = 0;
         }
 
