@@ -1113,7 +1113,7 @@ MonoBehaviour:
   _androidGameId: 4259389
   _iOsGameId: 4259388
   _testMode: 0
-  _enablePerPlacementMode: 1
+  _enablePerPlacementMode: 0
   addPedsAd: {fileID: 229440053}
 --- !u!4 &229440055
 Transform:

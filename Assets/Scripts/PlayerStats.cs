@@ -241,9 +241,11 @@ public class PlayerStats : MonoBehaviour
 
     public void BuyPlane(int planeNumber)
     {
-        RemoveMoney(planesManager.planes[planeNumber].price);
-        ownedPlanes.Add(planeNumber);
-        SavePlayer();
+        if(money >= planesManager.planes[planeNumber].price){
+            RemoveMoney(planesManager.planes[planeNumber].price);
+            ownedPlanes.Add(planeNumber);
+            SavePlayer();
+        }
     }
 
     public void NextPlane()
